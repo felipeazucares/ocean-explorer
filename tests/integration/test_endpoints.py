@@ -1,9 +1,6 @@
 """Integration tests for Ocean Explorer API endpoints — Phase 5."""
 
-import pytest
-from fastapi.testclient import TestClient
 
-from app.main import app
 
 # ---------------------------------------------------------------------------
 # Helpers

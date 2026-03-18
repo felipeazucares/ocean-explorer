@@ -1,7 +1,7 @@
 """Probe domain class — encapsulates probe state and command execution."""
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 from app.domain.direction import Direction

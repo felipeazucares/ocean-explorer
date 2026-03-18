@@ -1,5 +1,4 @@
 """Unit tests for the Probe domain class (Phase 4)."""
-import pytest
 from app.domain.grid import Grid
 from app.domain.probe import Probe
 from app.models import CommandEnum, DirectionEnum

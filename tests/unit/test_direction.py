@@ -1,5 +1,4 @@
 """Unit tests for Direction domain class — Phase 2."""
-import pytest
 from app.domain.direction import Direction
 from app.models import DirectionEnum
 

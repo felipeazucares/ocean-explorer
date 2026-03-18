@@ -9,7 +9,6 @@ try:
 except ImportError:
     ASGITransport = None
 
-from httpx import AsyncClient
 
 
 @pytest.fixture()

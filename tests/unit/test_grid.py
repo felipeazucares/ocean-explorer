@@ -1,5 +1,4 @@
 """Unit tests for Grid domain class — Phase 3."""
-import pytest
 from app.domain.grid import Grid
 
 

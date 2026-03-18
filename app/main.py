@@ -2,7 +2,7 @@
 
 import logging
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
@@ -14,6 +14,13 @@ app = FastAPI(title="Ocean Explorer", version="0.1.0")
 
 # In-memory probe state (reset between tests via conftest.py autouse fixture)
 probe = None
+
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException) -> JSONResponse:
+    """Log HTTP errors at ERROR level with request context."""
+    logger.error("HTTP %s on %s %s: %s", exc.status_code, request.method, request.url.path, exc.detail)
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
 
 
 @app.exception_handler(RequestValidationError)

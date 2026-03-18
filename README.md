@@ -205,9 +205,9 @@ Reading list that informed this approach:
 ### BDD + TDD
 BDD scenarios (bdd-scenarios.md) defined done. TDD unit tests drove
 each domain class. The acceptance tests map 1:1 to the BDD scenarios
-— 49 scenarios, 49 named acceptance tests.
+— 50 scenarios, 50 named acceptance tests.
 
-### Key Design Decisions
+### Key Design Decisions (see constitution.md for full constraints)
 - **Hard boundaries**: probe stops and reports, does not wrap. The
   ocean floor is a physical space with edges, not a torus.
 - **Origin (0,0) bottom-left, North = y+1**. Researched against
@@ -241,7 +241,7 @@ The AI did not write the spec. It built to it.
 ocean-explorer/
 ├── constitution.md      ← non-negotiable principles and guardrails
 ├── spec.md              ← what the system does (technology-agnostic)
-├── bdd-scenarios.md     ← 49 acceptance scenarios
+├── bdd-scenarios.md     ← 50 acceptance scenarios
 ├── tasks.md             ← ordered build sequence
 ├── README.md
 ├── docker-compose.yml
@@ -260,7 +260,7 @@ ocean-explorer/
     ├── conftest.py      ← shared fixtures
     ├── unit/            ← isolated domain class tests
     ├── integration/     ← FastAPI endpoint tests via TestClient
-    └── acceptance/      ← BDD scenario tests (49 named tests)
+    └── acceptance/      ← BDD scenario tests (50 named tests)
 ```
 
 ---
@@ -268,6 +268,6 @@ ocean-explorer/
 ## Test Coverage
 
 ```
-pytest --cov=app returns >= 90% coverage
-49 acceptance tests map directly to bdd-scenarios.md
+pytest --cov=app returns 100% coverage
+50 acceptance tests map directly to bdd-scenarios.md
 ```
