@@ -1,35 +1,43 @@
 # Session Context
 
 ## Current Work
-Phase 5 (FastAPI Routes) completed and merged to main. CLAUDE.md updated.
-Next session begins Phase 6: Acceptance Tests — 50 BDD scenarios from bdd-scenarios.md.
+Phase 7 (Quality Gates) complete. Committed on feature/phase-7-quality-gates.
+Merge to main is pending — user interrupted before the merge command was run.
 
 ## Recent Changes
-- `app/api/routes.py` — 4 route handlers: POST /probe/initialise, POST /probe/commands, GET /probe/history, GET /probe/state
-- `app/main.py` — router wired in, /health endpoint, HTTP logging middleware, RequestValidationError handler (422 → 400)
-- `tests/integration/test_endpoints.py` — 23 integration tests (all passing)
-- `CLAUDE.md` — progress tracker updated: Phase 5 done, Phase 6 next
+- `app/main.py` — added HTTPException handler for ERROR-level logging of all HTTP errors
+- `app/domain/probe.py` — removed unused `field` import (ruff fix)
+- `tests/conftest.py` — removed unused `AsyncClient` import (ruff fix)
+- `tests/integration/test_endpoints.py` — removed unused `pytest`, `TestClient`, `app` imports (ruff fix)
+- `tests/unit/test_direction.py` — removed unused `pytest` import (ruff fix)
+- `tests/unit/test_grid.py` — removed unused `pytest` import (ruff fix)
+- `tests/unit/test_probe.py` — removed unused `pytest` import (ruff fix)
+- `README.md` — corrected scenario/test count (49→50), coverage note (≥90%→100%), added constitution.md reference
+- `CLAUDE.md` — updated progress tracker: Phase 7 complete, pending merge
 
 ## Stable Features
-- All 112 tests passing: 89 unit + 23 integration
-- Domain layer (Direction, Grid, Probe) fully tested and independent of FastAPI
-- Pydantic models in app/models.py cover all request/response shapes
-- conftest.py autouse fixture resets `app.main.probe = None` before each test
+- 162 tests passing (89 unit + 23 integration + 50 acceptance)
+- 100% code coverage across all app/ modules
+- ruff check app/ tests/ — zero warnings
+- All BDD scenarios covered 1:1 in tests/acceptance/test_scenarios.py
+- API endpoints: POST /probe/initialise, POST /probe/commands, GET /probe/history, GET /probe/state, GET /health
 
 ## Build
 ```bash
-python -m pytest tests/unit/ tests/integration/ -q   # 112 tests
-python -m pytest tests/ -q                            # all tests
+python -m pytest --tb=short -q                        # run all 162 tests
+python -m ruff check app/ tests/                      # linting (clean)
+python -m pytest --cov=app --cov-report=term-missing  # coverage (100%)
+uvicorn app.main:app --reload                         # start dev server
 ```
 
 ## Key Patterns
-- `app.main.probe` is the in-memory probe singleton; imported inside route functions to avoid circular imports
-- Blocked commands return HTTP 409 with full CommandResponse body (not just detail string) — use JSONResponse
-- RequestValidationError → 400 handler lives in main.py (FastAPI default is 422)
-- Branch naming: `feature/phase-N-description`; pre-commit hook blocks direct commits to main
+- Probe state: module-level `probe = None` in app/main.py, reset per test via conftest.py autouse fixture
+- Circular import: routes.py imports `app.main` inside route functions (not at module level)
+- HTTPException → ERROR log: custom handler in main.py logs all HTTP errors before returning JSON response
+- Validation errors (422→400): RequestValidationError handler in main.py
 
 ## Next Steps
-1. Create branch: `git checkout -b feature/phase-6-acceptance-tests`
-2. Task 6.1: Implement `tests/acceptance/test_scenarios.py` — 50 named tests mapping every BDD scenario in bdd-scenarios.md
-3. All 50 must pass before merging
-4. Merge to main; then start Phase 7 (Quality Gates)
+1. Run: `git checkout main && git merge feature/phase-7-quality-gates`
+2. Verify: `git log --oneline -8` to confirm clean history
+3. Optionally push to remote: `git push origin main`
+4. Task 7.5 (Docker smoke test) could not be verified locally — Docker not installed on host
