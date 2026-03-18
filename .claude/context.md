@@ -1,37 +1,35 @@
 # Session Context
 
 ## Current Work
-Phase 4 (Probe Domain Class) completed and merged to main this session.
-Currently on branch `feature/phase-5-fastapi-routes`, ready to begin Phase 5.
-CLAUDE.md updated to reflect Phase 4 complete, Phase 5 next.
+Phase 5 (FastAPI Routes) completed and merged to main. CLAUDE.md updated.
+Next session begins Phase 6: Acceptance Tests — 50 BDD scenarios from bdd-scenarios.md.
 
 ## Recent Changes
-- `app/domain/probe.py` — new Probe class with ExecuteResult dataclass
-- `tests/unit/test_probe.py` — 23 unit tests for Probe (written before implementation)
-- `CLAUDE.md` — progress tracker updated (Phase 4 done, Phase 5 next)
+- `app/api/routes.py` — 4 route handlers: POST /probe/initialise, POST /probe/commands, GET /probe/history, GET /probe/state
+- `app/main.py` — router wired in, /health endpoint, HTTP logging middleware, RequestValidationError handler (422 → 400)
+- `tests/integration/test_endpoints.py` — 23 integration tests (all passing)
+- `CLAUDE.md` — progress tracker updated: Phase 5 done, Phase 6 next
 
 ## Stable Features
-- Phase 0: scaffolding, directory structure, conftest.py autouse fixture
-- Phase 1: Pydantic models (DirectionEnum, CommandEnum, all request/response models)
-- Phase 2: Direction class (`app/domain/direction.py`) — turn left/right, next_position
-- Phase 3: Grid class (`app/domain/grid.py`) — is_valid, has_obstacle, boundary/obstacle block
-- Phase 4: Probe class (`app/domain/probe.py`) — execute(), history, ExecuteResult
-- All 89 unit tests passing
+- All 112 tests passing: 89 unit + 23 integration
+- Domain layer (Direction, Grid, Probe) fully tested and independent of FastAPI
+- Pydantic models in app/models.py cover all request/response shapes
+- conftest.py autouse fixture resets `app.main.probe = None` before each test
 
 ## Build
 ```bash
-eval "$(pyenv init -)"
-python -m pytest tests/unit/ -v
+python -m pytest tests/unit/ tests/integration/ -q   # 112 tests
+python -m pytest tests/ -q                            # all tests
 ```
 
 ## Key Patterns
-- Probe.execute() returns ExecuteResult(blocked_by, blocked_at); halts on first block
-- Grid uses frozenset for obstacles; is_valid = in_bounds AND no obstacle
-- conftest.py autouse fixture resets probe state before each test (module-level `probe = None` in main.py)
-- Pre-commit hook blocks direct commits to main — always use feature branches
+- `app.main.probe` is the in-memory probe singleton; imported inside route functions to avoid circular imports
+- Blocked commands return HTTP 409 with full CommandResponse body (not just detail string) — use JSONResponse
+- RequestValidationError → 400 handler lives in main.py (FastAPI default is 422)
+- Branch naming: `feature/phase-N-description`; pre-commit hook blocks direct commits to main
 
 ## Next Steps
-1. Task 5.1: Write failing integration tests in `tests/integration/test_endpoints.py`
-2. Task 5.2: Implement routes in `app/api/routes.py` (POST /probe/initialise, POST /probe/commands, GET /probe/history, GET /probe/state)
-3. Task 5.3: Wire routes into `app/main.py` (FastAPI app, /health endpoint, logging middleware)
-4. Task 5.4: Commit on `feature/phase-5-fastapi-routes`, merge to main, branch to `feature/phase-6-acceptance-tests`
+1. Create branch: `git checkout -b feature/phase-6-acceptance-tests`
+2. Task 6.1: Implement `tests/acceptance/test_scenarios.py` — 50 named tests mapping every BDD scenario in bdd-scenarios.md
+3. All 50 must pass before merging
+4. Merge to main; then start Phase 7 (Quality Gates)
