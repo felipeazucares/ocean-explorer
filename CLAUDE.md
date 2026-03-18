@@ -39,9 +39,15 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 1: Pydantic Models — not yet started
+Phase 2: Direction Domain Class — not yet started
 
 ### Completed
+- **Phase 1: Pydantic Models** — merged to main
+  - Task 1.1: DirectionEnum (N/S/E/W)
+  - Task 1.2: CommandEnum (F/B/L/R)
+  - Task 1.3: InitialiseRequest, CommandRequest
+  - Task 1.4: Position, ProbeState, CommandResponse, HistoryResponse, StateResponse, ErrorResponse
+  - Task 1.5: Committed on feature/phase-1-pydantic-models, merged to main
 - **Phase 0: Project Scaffolding** — merged to main
   - Task 0.0: Git initialisation (main + feature branch)
   - Task 0.1: Directory structure created and verified against spec
