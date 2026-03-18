@@ -39,9 +39,13 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 2: Direction Domain Class — not yet started
+Phase 3: Grid Domain Class — in progress
 
 ### Completed
+- **Phase 2: Direction Domain Class** — merged to main
+  - Task 2.1: 18 unit tests (turn_right, turn_left, full rotations, next_position F/B all 4 directions)
+  - Task 2.2: Direction class in app/domain/direction.py
+  - Task 2.3: Committed on feature/phase-2-direction-class, merged to main
 - **Phase 1: Pydantic Models** — merged to main
   - Task 1.1: DirectionEnum (N/S/E/W)
   - Task 1.2: CommandEnum (F/B/L/R)
@@ -57,8 +61,6 @@ Phase 2: Direction Domain Class — not yet started
   - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
 
 ### Pending
-- Phase 1: Pydantic Models (models.py)
-- Phase 2: Direction Domain Class
 - Phase 3: Grid Domain Class
 - Phase 4: Probe Domain Class
 - Phase 5: FastAPI Routes

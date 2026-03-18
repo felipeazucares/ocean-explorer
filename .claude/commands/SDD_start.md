@@ -1,0 +1,1 @@
+Read CLAUDE.md and confirm you have read all referenced documents before proceeding.
