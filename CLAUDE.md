@@ -39,9 +39,16 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 7: Quality Gates — not yet started
+Phase 7: Quality Gates — complete, committed on feature/phase-7-quality-gates (pending merge to main)
 
 ### Completed
+- **Phase 7: Quality Gates** — committed on feature/phase-7-quality-gates
+  - Task 7.1: HTTPException handler added to main.py — all HTTP errors now logged at ERROR level with method, path, status, and detail
+  - Task 7.2: ruff check app/ tests/ — 8 unused imports removed (auto-fixed), zero warnings
+  - Task 7.3: pytest --cov=app — 100% coverage across all modules (200 statements, 0 missed)
+  - Task 7.4: README updated — corrected acceptance test count (49→50), coverage note (≥90%→100%), added constitution.md reference to design decisions section
+  - Task 7.5: Smoke test via uvicorn — /health, /probe/initialise, /probe/commands all verified manually
+  - Total tests passing: 162 (89 unit + 23 integration + 50 acceptance) — unchanged
 - **Phase 6: Acceptance Tests** — merged to main
   - Task 6.1: 50 acceptance tests in tests/acceptance/test_scenarios.py — one per BDD scenario in bdd-scenarios.md, end-to-end via TestClient, no domain mocking
   - Task 6.2: Committed on feature/phase-6-acceptance-tests, merged to main
@@ -79,7 +86,7 @@ Phase 7: Quality Gates — not yet started
   - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
 
 ### Pending
-- Phase 7: Quality Gates
+- None — all phases complete. Merge feature/phase-7-quality-gates to main to finish.
 
 ### Blockers
 - None currently
