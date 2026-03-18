@@ -6,7 +6,7 @@ Before doing anything else, read these documents in order:
 
 1. constitution.md — non-negotiable principles. All articles apply.
 2. spec.md — what the system does. Technology-agnostic.
-3. bdd-scenarios.md — 49 acceptance scenarios. These define done.
+3. bdd-scenarios.md — 50 acceptance scenarios. These define done.
 4. tasks.md — ordered build sequence. Follow phases strictly.
 
 The documents form a dependency chain described in constitution.md
@@ -39,9 +39,13 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 6: Acceptance Tests — not yet started
+Phase 7: Quality Gates — not yet started
 
 ### Completed
+- **Phase 6: Acceptance Tests** — merged to main
+  - Task 6.1: 50 acceptance tests in tests/acceptance/test_scenarios.py — one per BDD scenario in bdd-scenarios.md, end-to-end via TestClient, no domain mocking
+  - Task 6.2: Committed on feature/phase-6-acceptance-tests, merged to main
+  - Total tests passing: 162 (89 unit + 23 integration + 50 acceptance)
 - **Phase 5: FastAPI Routes** — merged to main
   - Task 5.1: 23 integration tests (POST /probe/initialise, POST /probe/commands, GET /probe/history, GET /probe/state — all status codes and response shapes)
   - Task 5.2: Routes in app/api/routes.py (_validate_initialise helper, 4 route handlers)
@@ -75,7 +79,6 @@ Phase 6: Acceptance Tests — not yet started
   - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
 
 ### Pending
-- Phase 6: Acceptance Tests
 - Phase 7: Quality Gates
 
 ### Blockers
