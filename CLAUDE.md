@@ -33,3 +33,38 @@ At the end of each session:
 - Never generate a function longer than 20 lines.
 - Flag ambiguity rather than assuming — stop and report.
 - Never proceed to the next phase with failing tests.
+
+---
+
+## Progress Tracker
+
+### Current Phase
+Phase 1: Pydantic Models — not yet started
+
+### Completed
+- **Phase 0: Project Scaffolding** — merged to main
+  - Task 0.0: Git initialisation (main + feature branch)
+  - Task 0.1: Directory structure created and verified against spec
+  - Task 0.1.1: conftest.py with autouse fixture for probe state isolation
+  - Task 0.2: requirements.txt with all Article 1 dependencies
+  - Task 0.3: Dockerfile and docker-compose.yml
+  - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
+
+### Pending
+- Phase 1: Pydantic Models (models.py)
+- Phase 2: Direction Domain Class
+- Phase 3: Grid Domain Class
+- Phase 4: Probe Domain Class
+- Phase 5: FastAPI Routes
+- Phase 6: Acceptance Tests
+- Phase 7: Quality Gates
+
+### Blockers
+- None currently
+
+### Decisions Made
+- **Remote**: origin set to https://github.com/felipeazucares/ocean-explorer.git
+- **Python**: 3.12.13 via pyenv, set in .python-version
+- **Docker**: Cannot verify locally (Docker not installed on host), but Dockerfile and docker-compose.yml are ready
+- **Probe state**: Held as a module-level variable in app/main.py (`probe = None`), reset via conftest.py autouse fixture
+- **.gitignore**: Added for Python artifacts (not in tasks.md but appropriate)
