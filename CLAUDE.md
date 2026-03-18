@@ -39,9 +39,13 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 4: Probe Domain Class — not yet started
+Phase 5: FastAPI Routes — not yet started
 
 ### Completed
+- **Phase 4: Probe Domain Class** — merged to main
+  - Task 4.1: 23 unit tests (initialisation, forward/backward movement, turns, visit history, boundary blocking, obstacle blocking, execute sequence)
+  - Task 4.2: Probe class in app/domain/probe.py with ExecuteResult dataclass
+  - Task 4.3: Committed on feature/phase-4-probe-class, merged to main
 - **Phase 3: Grid Domain Class** — merged to main
   - Task 3.1: 16 unit tests (is_valid, has_obstacle, is_boundary_block, is_obstacle_block)
   - Task 3.2: Grid class in app/domain/grid.py
@@ -65,7 +69,6 @@ Phase 4: Probe Domain Class — not yet started
   - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
 
 ### Pending
-- Phase 4: Probe Domain Class
 - Phase 5: FastAPI Routes
 - Phase 6: Acceptance Tests
 - Phase 7: Quality Gates
