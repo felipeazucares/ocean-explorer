@@ -39,9 +39,15 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 5: FastAPI Routes — not yet started
+Phase 6: Acceptance Tests — not yet started
 
 ### Completed
+- **Phase 5: FastAPI Routes** — merged to main
+  - Task 5.1: 23 integration tests (POST /probe/initialise, POST /probe/commands, GET /probe/history, GET /probe/state — all status codes and response shapes)
+  - Task 5.2: Routes in app/api/routes.py (_validate_initialise helper, 4 route handlers)
+  - Task 5.3: app/main.py wired with router, /health endpoint, HTTP logging middleware, RequestValidationError handler (422 → 400)
+  - Task 5.4: Committed on feature/phase-5-fastapi-routes, merged to main
+  - Total tests passing: 112 (89 unit + 23 integration)
 - **Phase 4: Probe Domain Class** — merged to main
   - Task 4.1: 23 unit tests (initialisation, forward/backward movement, turns, visit history, boundary blocking, obstacle blocking, execute sequence)
   - Task 4.2: Probe class in app/domain/probe.py with ExecuteResult dataclass
@@ -69,7 +75,6 @@ Phase 5: FastAPI Routes — not yet started
   - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
 
 ### Pending
-- Phase 5: FastAPI Routes
 - Phase 6: Acceptance Tests
 - Phase 7: Quality Gates
 
@@ -88,4 +93,6 @@ Hook is in `git-hooks/pre-commit` and is version-controlled.
 - **Python**: 3.12.13 via pyenv, set in .python-version
 - **Docker**: Cannot verify locally (Docker not installed on host), but Dockerfile and docker-compose.yml are ready
 - **Probe state**: Held as a module-level variable in app/main.py (`probe = None`), reset via conftest.py autouse fixture
+- **Circular import avoidance**: routes.py imports `app.main` inside route functions (not at module level) to avoid circular dependency
+- **Validation errors → 400**: RequestValidationError handler in main.py converts FastAPI's default 422 to 400 per spec requirement
 - **.gitignore**: Added for Python artifacts (not in tasks.md but appropriate)
