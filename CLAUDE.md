@@ -70,6 +70,13 @@ Phase 3: Grid Domain Class — in progress
 ### Blockers
 - None currently
 
+### Git Hook Setup
+After cloning, activate the pre-commit hook that blocks direct commits to main:
+```
+git config core.hooksPath git-hooks
+```
+Hook is in `git-hooks/pre-commit` and is version-controlled.
+
 ### Decisions Made
 - **Remote**: origin set to https://github.com/felipeazucares/ocean-explorer.git
 - **Python**: 3.12.13 via pyenv, set in .python-version

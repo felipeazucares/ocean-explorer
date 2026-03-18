@@ -94,6 +94,18 @@ API available at http://localhost:8000
 
 ---
 
+## Git Hooks
+
+A pre-commit hook prevents direct commits to `main`. After cloning, activate it with:
+
+```
+git config core.hooksPath git-hooks
+```
+
+The hook lives in `git-hooks/pre-commit` and is version-controlled.
+
+---
+
 ## Running the Tests
 
 ### With Docker
