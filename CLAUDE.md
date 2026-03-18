@@ -39,9 +39,13 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 3: Grid Domain Class — in progress
+Phase 4: Probe Domain Class — not yet started
 
 ### Completed
+- **Phase 3: Grid Domain Class** — merged to main
+  - Task 3.1: 16 unit tests (is_valid, has_obstacle, is_boundary_block, is_obstacle_block)
+  - Task 3.2: Grid class in app/domain/grid.py
+  - Task 3.3: Committed on feature/phase-3-grid-class, merged to main
 - **Phase 2: Direction Domain Class** — merged to main
   - Task 2.1: 18 unit tests (turn_right, turn_left, full rotations, next_position F/B all 4 directions)
   - Task 2.2: Direction class in app/domain/direction.py
@@ -61,7 +65,6 @@ Phase 3: Grid Domain Class — in progress
   - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
 
 ### Pending
-- Phase 3: Grid Domain Class
 - Phase 4: Probe Domain Class
 - Phase 5: FastAPI Routes
 - Phase 6: Acceptance Tests
