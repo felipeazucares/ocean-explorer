@@ -1,10 +1,41 @@
 # Ocean Explorer Kata
 # Version: 1.4.0
-## R-00272722 D12 Principal Engineer — Pre-Work Submission
+## D12 Principal Engineer — Pre-Work Submission
+
+## Running the API
+
+### With Docker (recommended)
+```
+docker compose up
+```
+API available at http://localhost:8000
+Interactive docs at http://localhost:8000/docs
+
+To stop:
+```
+docker compose down
+```
+
+### Without Docker
+The following commands create and activate a virtual environment, install dependencies, and start the server:
+```
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+API available at http://localhost:8000
+
+To stop the server: `Ctrl+C`
+
+To deactivate the virtual environment when done:
+```
+deactivate
+```
 
 ---
 
-## Quick Start — Interacting with the API
+## Interacting with the API
 
 Once running, browse to http://localhost:8000/docs for the interactive
 Swagger UI. The typical session follows three steps:
@@ -83,39 +114,6 @@ whether it was blocked:
 - Python 3.12 — install via [python.org](https://www.python.org/downloads/) or `brew install python@3.12`
 - pip — bundled with Python 3.12
 - The non-Docker path uses a Python virtual environment (`.venv`) to isolate dependencies from your system Python. This is created automatically by the setup commands below.
-
----
-
-## Running the API
-
-### With Docker (recommended)
-```
-docker compose up
-```
-API available at http://localhost:8000
-Interactive docs at http://localhost:8000/docs
-
-To stop:
-```
-docker compose down
-```
-
-### Without Docker
-The following commands create and activate a virtual environment, install dependencies, and start the server:
-```
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
-API available at http://localhost:8000
-
-To stop the server: `Ctrl+C`
-
-To deactivate the virtual environment when done:
-```
-deactivate
-```
 
 ---
 
