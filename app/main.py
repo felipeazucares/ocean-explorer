@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 
 from app.api.routes import router
 
+logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s %(message)s")
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Ocean Explorer", version="0.1.0")

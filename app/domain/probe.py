@@ -6,14 +6,14 @@ from typing import Optional
 
 from app.domain.direction import Direction
 from app.domain.grid import Grid
-from app.models import CommandEnum, DirectionEnum
+from app.models import BlockReasonEnum, CommandEnum, DirectionEnum
 
 
 @dataclass
 class ExecuteResult:
     """Result returned by Probe.execute()."""
 
-    blocked_by: Optional[str] = None
+    blocked_by: Optional[BlockReasonEnum] = None
     blocked_at: Optional[tuple[int, int]] = None
 
 
@@ -75,5 +75,5 @@ class Probe:
     def _build_block_result(self, nx: int, ny: int) -> ExecuteResult:
         """Return the correct block reason for position (nx, ny)."""
         if self._grid.is_boundary_block(nx, ny):
-            return ExecuteResult(blocked_by="boundary")
-        return ExecuteResult(blocked_by="obstacle", blocked_at=(nx, ny))
+            return ExecuteResult(blocked_by=BlockReasonEnum.BOUNDARY)
+        return ExecuteResult(blocked_by=BlockReasonEnum.OBSTACLE, blocked_at=(nx, ny))

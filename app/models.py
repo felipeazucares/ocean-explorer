@@ -23,6 +23,13 @@ class CommandEnum(str, Enum):
     RIGHT = "R"
 
 
+class BlockReasonEnum(str, Enum):
+    """Reasons a probe move can be blocked."""
+
+    BOUNDARY = "boundary"
+    OBSTACLE = "obstacle"
+
+
 class Position(BaseModel):
     """An x/y coordinate on the grid."""
 
@@ -58,7 +65,7 @@ class CommandResponse(BaseModel):
     """Response body for POST /probe/commands."""
 
     probe_state: ProbeState
-    blocked_by: Optional[str] = None
+    blocked_by: Optional[BlockReasonEnum] = None
     blocked_at: Optional[Position] = None
     visited: list[Position]
 

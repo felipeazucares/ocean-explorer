@@ -39,7 +39,7 @@ At the end of each session:
 ## Progress Tracker
 
 ### Current Phase
-Phase 7: Quality Gates — complete, committed on feature/phase-7-quality-gates (pending merge to main)
+Phase 7: Quality Gates — complete, merged to main
 
 ### Completed
 - **Phase 7: Quality Gates** — committed on feature/phase-7-quality-gates
@@ -86,7 +86,8 @@ Phase 7: Quality Gates — complete, committed on feature/phase-7-quality-gates 
   - Task 0.4: Committed on feature/phase-0-scaffolding, merged to main
 
 ### Pending
-- None — all phases complete. Merge feature/phase-7-quality-gates to main to finish.
+
+- None — all phases complete and merged to main.
 
 ### Blockers
 - None currently

@@ -17,6 +17,8 @@ from app.models import (
 
 router = APIRouter(prefix="/probe")
 
+_NOT_INITIALISED = "Probe is not initialised"
+
 
 def _validate_initialise(request: InitialiseRequest) -> None:
     """Validate initialise request; raise HTTPException(400) on failure."""
@@ -61,7 +63,7 @@ def run_commands(request: CommandRequest) -> JSONResponse:
     import app.main as main  # avoid circular import at module level
 
     if main.probe is None:
-        raise HTTPException(status_code=400, detail="Probe is not initialised")
+        raise HTTPException(status_code=400, detail=_NOT_INITIALISED)
     result = main.probe.execute(request.commands)
     blocked_at = (
         Position(x=result.blocked_at[0], y=result.blocked_at[1])
@@ -87,7 +89,7 @@ def get_history() -> HistoryResponse:
     import app.main as main  # avoid circular import at module level
 
     if main.probe is None:
-        raise HTTPException(status_code=400, detail="Probe is not initialised")
+        raise HTTPException(status_code=400, detail=_NOT_INITIALISED)
     return HistoryResponse(
         position=Position(x=main.probe.x, y=main.probe.y),
         direction=main.probe.direction,
@@ -101,7 +103,7 @@ def get_state() -> StateResponse:
     import app.main as main  # avoid circular import at module level
 
     if main.probe is None:
-        raise HTTPException(status_code=400, detail="Probe is not initialised")
+        raise HTTPException(status_code=400, detail=_NOT_INITIALISED)
     return StateResponse(
         position=Position(x=main.probe.x, y=main.probe.y),
         direction=main.probe.direction,
