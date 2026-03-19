@@ -2,6 +2,8 @@
 # Version: 1.4.0
 ## D12 Principal Engineer — Pre-Work Submission
 
+Repo available https://github.com/felipeazucares/ocean-explorer
+
 ## Running the API
 
 ### With Docker (recommended)
